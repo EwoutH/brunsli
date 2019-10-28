@@ -1,6 +1,7 @@
 language: cpp
 dist: bionic
 env: CFLAGS="-Werror"
+arch: arm64
 
 script:
  - cmake ./
@@ -9,9 +10,7 @@ script:
 
 jobs:
   include:
-    - name: Default build (x64, GCC 7)
-    - name: Arm build
-      arch: arm64
+    - name: Default build (GCC 7)
     - name: GCC 8 build
       env: CFLAGS="-Werror" CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8
       install: sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; sudo apt-get install -qq gcc-8 g++-8
