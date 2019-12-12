@@ -15,4 +15,3 @@ jobs:
       run: |
         export CC=gcc-9 CXX=g++-9
         make -j
-        sudo make -j install
