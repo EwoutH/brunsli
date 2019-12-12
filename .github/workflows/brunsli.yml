@@ -1,0 +1,18 @@
+name: Brunsli
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install dependencies
+      run: sudo apt-get install -y gcc-9 g++-9 nasm yasm cmake
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+        submodules: recursive
+    - name: Compile Brunsli
+      run: |
+        export CC=gcc-9 CXX=g++-9
+        make -j
+        make -j install
