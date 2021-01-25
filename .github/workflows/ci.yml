@@ -2,7 +2,6 @@ name: CMake build
 
 on:
   push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -52,7 +51,7 @@ jobs:
       run: cmake --build out --config Release -j 2
 
     - name: test
-      run: cd out && ctest -j 2
+      run: ctest -j 2 c/tests out
 
     - name: upload
       if: ${{ matrix.upload_artifacts }}
